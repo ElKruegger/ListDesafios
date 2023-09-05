@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
@@ -267,6 +268,9 @@ namespace ListDesafios.Metodos
             }
         }
 
+        //Implemente uma lista ligada simples.
+
+
         //Utilizando LINQ, filtre os números pares de uma lista.
         public static void LinqFiltroPars()
         {
@@ -278,7 +282,7 @@ namespace ListDesafios.Metodos
             }
         }
         //Encontre o elemento mais frequente em uma lista.
-        public static void ElementoMaisFrequente() 
+        public static void ElementoMaisFrequente()
         {
             List<int> ints = new List<int>() { 1, 1, 2, 4, 6, 7, 8, 1, 1, 10, 15 };
             var resultado = ints.GroupBy(i => i);
@@ -287,6 +291,84 @@ namespace ListDesafios.Metodos
                 Console.WriteLine($"item : {item.Key} / ocorrência {item.Count()}");
             }
         }
+
+        //Utilize delegates para processar uma lista de inteiros.
+        delegate int MeuDelegate(int numero);
+        public static void ProcessarListasDelegate()
+        {
+            List<int> numerosdelegate = new List<int>() { 1, 2, 3, 4, 5, 6, };
+            MeuDelegate meuDelegate = DobrarNumero;
+            foreach (var item in numerosdelegate)
+            {
+                int resultado = meuDelegate(item);
+                Console.WriteLine($" O dobro  de {item} é igual a {resultado}");
+            }
+        }
+        static int DobrarNumero(int numero)
+        {
+            return numero * 2;
+        }
+
+        // Encontre a interseção de duas listas usando LINQ.
+        public static void InterseccaoDeListas()
+        {
+            List<int> lista1 = new List<int> { 1, 2, 3, 4, 5 };
+            List<int> lista2 = new List<int> { 3, 4, 5, 6, 7 };
+
+            // Encontre a interseção das duas listas usando LINQ.
+            var intersecao = lista1.Intersect(lista2);
+
+            Console.WriteLine("Interseção das duas listas:");
+            foreach (int numero in intersecao)
+            {
+                Console.WriteLine(numero);
+            }
+        }
+
+        // Encontre o subarray contínuo dentro de um array que tem a soma máxima.
+        public static void subsarrays()
+        {
+            int[] array = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+
+            int maxSum = EncontreSubArrayMaximo(array);
+            Console.WriteLine($"A soma máxima do subarray é: {maxSum}");
+        }
+        static int EncontreSubArrayMaximo(int[] array)
+        {
+            int maxAtual = array[0];
+            int maxGlobal = array[0];
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                // Atualiza o máximo atual para incluir o elemento atual ou começar um novo subarray.
+                maxAtual = Math.Max(array[i], maxAtual + array[i]);
+
+                // Atualiza o máximo global se necessário.
+                maxGlobal = Math.Max(maxGlobal, maxAtual);
+            }
+
+            return maxGlobal;
+        }
+
+        //Implemente uma fila (queue) usando lista.
+        public static void listqueue()
+        {
+            List<string> listavazia = new List<string>();
+            var fila = new Queue<string>();
+            fila.Enqueue("Eu");
+            fila.Enqueue("Tu");
+            fila.Enqueue("nós");
+            fila.Enqueue("vós");
+            fila.Enqueue("Eles");
+            Console.WriteLine(fila.Peek());
+            Console.WriteLine(fila.Count());
+
+            foreach (var item in fila)
+            {
+                Console.WriteLine($" Item : {item}");
+            }
+        }
+
 
     }
 }

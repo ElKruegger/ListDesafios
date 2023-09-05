@@ -97,6 +97,23 @@ namespace ListDesafios
             //Encontre o elemento mais frequente em uma lista.
             //Metodos.Metodos.ElementoMaisFrequente();
 
+            //Utilize delegates para processar uma lista de inteiros.
+            //Metodos.Metodos.ProcessarListasDelegate();
+
+            //Encontre a interseção de duas listas usando LINQ.
+            //Metodos.Metodos.InterseccaoDeListas();
+
+            // Encontre o subarray contínuo dentro de um array que tem a soma máxima.
+            //Metodos.Metodos.subsarrays();
+
+            //Implemente uma fila (queue) usando lista.
+            //Metodos.Metodos.listqueue();
+
+
+            //Crie uma classe genérica que possa trabalhar com listas de diferentes tipos.
+
+
+
             #endregion Avancado
         }
     }
